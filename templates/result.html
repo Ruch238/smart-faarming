@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <title>Smart Farm Assistant</title>
+</head>
+
+<body>
+  <style>
+    body {
+      background-image: url("https://source.unsplash.com/1kIyfRdLMxI/1600x900");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: left center;
+
+    }
+
+    .card {
+      margin: 40px auto;
+      width: 30rem;
+      background: rgba(246, 242, 242, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(70, 71, 75, 0.37);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 10px;
+      border: 7px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .navbar {
+      background-color: #1daa63;
+    }
+
+    .btn {
+      background: rgba(246, 242, 242, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(70, 71, 75, 0.37);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border-radius: 50px;
+      border: 7px solid rgba(255, 255, 255, 0.18);
+    }
+
+  </style>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="info">Smart Farm Assistant</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="About" font color="white">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="form" font color="white">Crop Prediction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="diseases" font color="white">Disease Detection</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="team" font color="white">Our Team</a>
+      </li>
+      </ul>
+      
+    </div>
+  </div>
+  
+<div class="collapse navbar-collapse" id="navbarText">
+<ul class="navbar-nav mr-auto">
+  {% if user.is_authenticated %}
+  
+  <li class="nav-item">
+    <a class="nav-link" color="white" href="/logout">Logout</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" color="white" href="#">Welcome, {{user.username}}</a>
+  </li>
+
+  {% else %}
+  
+  <li class="nav-item">
+    <a class="nav-link" color="white" href="/login">Login</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" color="white" href="/register">Register</a>
+  </li>
+  {% endif %}
+</ul>
+</div>
+
+</nav>
+
+  <center>
+    <div class="card">
+      <div class="card-body px-3">
+
+      <h5 class="alert-heading">The results are here.</h5>
+      <h5> The crop you can grow on your land is <b><em>{{ans}}</em></b>.</h5>
+       <h3> <b> HAPPY FARMING!</b></h3>
+    </div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn"><a href="{% url 'home' %}"> Click here to go home</a> </button>
+
+    <br><br>
+
+
+  </center>
+
+  <div id="google_element"></div>
+  <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+  <script>
+    function loadGoogleTranslate() {
+      new google.translate.TranslateElement("google_element");
+    }
+  </script>
+
+
+</body>
+
+</html>
