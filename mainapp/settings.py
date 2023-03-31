@@ -129,7 +129,7 @@ USE_TZ = True
 USE_L10N = True
 
 
-MEDIA_ROOT = 'C:\\Users\\HP\\Desktop\\PROJECT\\media'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = 'media/'
 
 # Static files (CSS, JavaScript, Images)
