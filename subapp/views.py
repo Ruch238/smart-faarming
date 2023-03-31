@@ -8,6 +8,7 @@ from PIL import Image
 import joblib
 import io
 from pathlib import Path
+import os
 
 from subapp.diseases import disease_dic
 
@@ -16,6 +17,7 @@ from mainapp.forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from django.conf import settings
 
 
 def home(request):
@@ -156,8 +158,7 @@ disease_classes = ['Apple___Apple_scab',
                    'Tomato___Tomato_mosaic_virus',
                    'Tomato___healthy']
 
-
-disease_model_path = 'C:\\Users\\HP\\Desktop\\PROJECT\\pymodel\\plant-disease-model.pth'
+disease_model_path = settings.PY_MODEL+'plant-disease-model.pth'
 disease_model = ResNet9(3, len(disease_classes))
 disease_model.load_state_dict(torch.load(
     disease_model_path, map_location=torch.device('cpu')))

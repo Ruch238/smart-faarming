@@ -15,10 +15,13 @@ import os
 
 from django.contrib.messages import constants as messages
 
+settings_dir = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+PY_MODEL = os.path.join(PROJECT_ROOT, 'pymodel/')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -29,7 +32,7 @@ SECRET_KEY = 'django-insecure-q!00=v5!h!!f3%0pcac1lg_g*p6xva14*!9@zea%euxhl=(0p4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["web-production-5858.up.railway.app"]
+ALLOWED_HOSTS = ["web-production-5858.up.railway.app", "127.0.0.1"]
 
 
 # Application definition
