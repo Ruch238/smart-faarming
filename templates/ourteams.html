@@ -161,8 +161,9 @@
 
     <main class="d-flex flex-wrap justify-content-evenly">
       <div class="card p-2 mx-5 my-3 custom-card">
+        {% load static %}
         <img
-          src="../static/darshan.jpg"
+          src="{% static '../static/darshan.jpg' %}"
           alt="Sample photo"
           class="card-img-top"
           style="
@@ -178,8 +179,9 @@
       </div>
 
       <div class="card p-2 mx-5 my-3 custom-card">
+        {% load static %}
         <img
-          src="../static/atharva.JPG"
+          src="{% static '../static/atharva.JPG' %}"
           alt="Sample photo"
           class="card-img-top"
           style="
@@ -193,9 +195,11 @@
           <p class="card-text">19103A0043</p>
         </div>
       </div>
+
       <div class="card p-2 mx-5 my-3 custom-card">
+        {% load static %}
         <img
-          src="../staticfiles/rucha.jpeg"
+          src="{% static '../static/rucha.jpeg' %}"
           alt="Sample photo"
           class="card-img-top"
           style="
@@ -210,8 +214,9 @@
         </div>
       </div>
       <div class="card p-2 mx-5 my-3 custom-card">
+        {% load static %}
         <img
-          src="../staticfiles/sunjanaa.jpg"
+          src="{% static '../static/sunjanaa.jpg' %}"
           alt="Sample photo"
           class="card-img-top"
           style="
