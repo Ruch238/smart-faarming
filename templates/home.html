@@ -37,7 +37,10 @@
       border: 7px solid rgba(255, 255, 255, 0.18);
     }
 
-
+    .responsive {
+     max-width: 100%;
+    height: auto;
+}
 
 
     @media only screen and (max-width: 600px) {
@@ -52,10 +55,15 @@
 </head>
 
 <body>
-  {% include 'messages.html' %}
+  {% include 'messages.html' %}  
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
+      {% load static %}
       <a class="navbar-brand" href="/">Smart Farm Assistant</a>
+      </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -75,32 +83,33 @@
             <a class="nav-link active" aria-current="page" href="team" font color="white">Our Team</a>
         </li>
         </ul>
+        <ul class="navbar-nav mr-auto">
+          {% if user.is_authenticated %}
+          
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="#">Welcome, {{user.username}}</a>
+          </li>
+      
+          {% else %}
+          
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/login">Login</a>
+          </li>
         
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/register">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+
       </div>
     </div>
     
-<div class="collapse navbar-collapse" id="navbarText">
-  <ul class="navbar-nav mr-auto">
-    {% if user.is_authenticated %}
-    
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/logout">Logout</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="#">Welcome, {{user.username}}</a>
-    </li>
-
-    {% else %}
-    
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/login">Login</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/register">Register</a>
-    </li>
-    {% endif %}
-  </ul>
+<div class="collapse navbar-collapse justify-content-end" id="navbarText">
+ 
 </div>
 
   </nav>
@@ -133,7 +142,9 @@
               <h5> Here Are Some Questions We'll Answer<br>
                 What crop to plant here?</h5>
               <br>
-              <img src="https://images.unsplash.com/photo-1511735643442-503bb3bd348a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2hlYXQlMjBjcm9wfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="Nature" class="responsive" style="width: 30rem !important;
+              {% load static %}
+          
+              <img src="{% static '../static/about.jpg' %}" alt="Nature" class="responsive" style="width: 30rem !important;
               height: 350px ;
               margin: 0 auto 1em auto;">
             </div>

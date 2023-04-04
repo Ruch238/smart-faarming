@@ -52,6 +52,8 @@
 </head>
 
 <body>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Smart Farm Assistant</a>
@@ -74,32 +76,33 @@
             <a class="nav-link active" aria-current="page" href="team" font color="white">Our Team</a>
         </li>
         </ul>
+        <ul class="navbar-nav mr-auto">
+          {% if user.is_authenticated %}
+          
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="#">Welcome, {{user.username}}</a>
+          </li>
+      
+          {% else %}
+          
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/login">Login</a>
+          </li>
         
+          <li class="nav-item">
+            <a class="nav-link" color="white" href="/register">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+
       </div>
     </div>
     
-<div class="collapse navbar-collapse" id="navbarText">
-  <ul class="navbar-nav mr-auto">
-    {% if user.is_authenticated %}
-    
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/logout">Logout</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="#">Welcome, {{user.username}}</a>
-    </li>
-
-    {% else %}
-    
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/login">Login</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" color="white" href="/register">Register</a>
-    </li>
-    {% endif %}
-  </ul>
+<div class="collapse navbar-collapse justify-content-end" id="navbarText">
+ 
 </div>
 
   </nav>
