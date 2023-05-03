@@ -18,6 +18,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -32,10 +33,12 @@ def ourteams(request):
     return render(request, "ourteams.html")
 
 
+@login_required
 def ourservices(request):
     return render(request, "ourservices.html")
 
 
+@login_required
 def diseases(request):
     from .models import Userr
     userrs = Userr.objects.all()
