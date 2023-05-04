@@ -56,31 +56,6 @@ def uploadImage(request):
     return render(request, "diseases.html")
 
 
-# def d_result(request):
-
-#     title = 'Disease Detection'
-
-#     if request.method == 'POST':
-#         if request.FILES.get("image"):
-#             return redirect("/diseases")
-#         file = request.FILES.get('image')
-#         # if not file:
-#         #     return render('disease.html', title=title)
-#         print("IMAGE============", file)
-#         try:
-#             # pic = file.read()
-
-#             prediction = predict_image(file)
-
-#             prediction_data = str(disease_dic[prediction])
-#             print("PREDICTION++++++++++++++++++++++", prediction)
-#             # return render('disease_result.html', prediction=prediction_data, title=title)
-#         except:
-#             print("RESTRFGFSRTYSFGRETSDTGFSD")
-#             pass
-
-#     return render(request, 'diseases_result.html', {"prediction": prediction})
-
 def d_result(request):
 
     title = 'Disease Detection'
@@ -103,7 +78,7 @@ def d_result(request):
 
 def result(request):
 
-    CL = joblib.load("FinalModel.sav")
+    CL = joblib.load("crop_prediction.sav")
     lst = []
 
     lst.append(float(request.GET["N"]))
