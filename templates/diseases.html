@@ -29,7 +29,7 @@
 
     .card {
       margin: 30px auto;
-      width: 25rem;
+      width: 28rem;
       background: rgba(246, 242, 242, 0.25);
       box-shadow: 0 8px 32px 0 rgba(70, 71, 75, 0.37);
       backdrop-filter: blur(5px);
@@ -47,7 +47,7 @@
       }
     
     .imageinfo{
-      font-family: 'Brush Script MT', cursive;
+      
       font-size: 15px;
       color:gray;
     }
@@ -138,12 +138,12 @@
             {% csrf_token %}<br>
            
             <br>
-            <input type="file" name="image">
+            <input type="file" name="image"> <br>
             <!-- <form action="uploadImage/" method="post" enctype="multipart/form-data">
               <input type="submit" value="upload file" />
             </form> -->
-            <div class="imageinfo">(Image should be of ratio 1:1)</div>
-            
+            <br><div class="imageinfo">(Image should be of ratio 1:1)</div>
+           
             <div class="imageinfo">Please convert your image into 1:1 ratio aspect <a href="https://croppola.com/" target="_blank">Click here</a></div>
            
             <div class="d-flex justify-content-center mx-auto mt-3">
