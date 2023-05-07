@@ -12,7 +12,7 @@ import os
 
 from subapp.diseases import disease_dic
 
-
+from .models import Userr
 from mainapp.forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -27,6 +27,10 @@ def home(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def tutorial(request):
+    return render(request, "tutorial.html")
 
 
 def ourteams(request):

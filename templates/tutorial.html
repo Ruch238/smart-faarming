@@ -25,10 +25,22 @@
     .navbar {
       background-color: #1daa63;
     }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+       height: 100%;
+    }
+
 
     .card {
-      margin: 30px auto;
-      width: 25rem;
+      margin: 0 auto;
+      max-width: 800px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
       background: rgba(246, 242, 242, 0.25);
       box-shadow: 0 8px 32px 0 rgba(70, 71, 75, 0.37);
       backdrop-filter: blur(5px);
@@ -37,26 +49,51 @@
       border: 7px solid rgba(255, 255, 255, 0.18);
     }
 
-    
-      @media only screen and (max-width: 600px) {
-        .card {
-          width: 100%;
-          margin: 0
-        }
-      }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      margin-bottom: 20px;
+    }
 
-      
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .responsive {
+      max-width: 100%;
+      height: auto;
+    }
+
+
+
+    @media only screen and (max-width: 600px) {
+      .card {
+        width: 100%;
+        margin: 0;
+        font-size: 14px;
+      }
+    }
   </style>
 
   <title>Smart Farm Assistant</title>
 </head>
 
 <body>
+  {% include 'messages.html' %}  
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
+      {% load static %}
       <a class="navbar-brand" href="/">Smart Farm Assistant</a>
+      </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -109,6 +146,8 @@
 </div>
 
   </nav>
+
+
   <div id="google_element"></div>
   <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
   <script>
@@ -117,77 +156,31 @@
     }
   </script>
 
-  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-    
+
   <center>
-    
-    <div class="card">
-      <div class="card-body px-3">
-        <h4 class="card-title"><b>Smart Farm Assistant</b></h4>
-        <h6>Please enter the details of the soil:</h6>
-        <form action="{% url 'result' %}">
-
-          {% csrf_token %}
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Nitrogen (kg/ha) </label>
-            <input type="text" class="form-control" name="N" id="formGroupExampleInput"
-              placeholder="Enter value of Nitrogen" value={{temp.N}}>
-          </div>
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Phosphorus (kg/ha)</label>
-            <input type="text" class="form-control" name="P" id="formGroupExampleInput2"
-              placeholder="Enter value of Phosphorus" value={{temp.P}}>
-          </div>
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label"> Potassium (kg/ha) </label>
-            <input type="text" class="form-control" name="K" id="formGroupExampleInput"
-              placeholder="Enter value of Potassium" value={{temp.K}}>
-          </div>
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Temperature (C) </label>
-            <input type="text" class="form-control" name="temperature" id="formGroupExampleInput2"
-              placeholder="Enter temperature" value={{temp.temperature}}>
-          </div>
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">PH level</label>
-            <input type="text" class="form-control" name="ph" id="formGroupExampleInput" placeholder="Enter ph value"
-              value={{temp.ph}}>
-          </div>
-
-
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Rainfall (mm) </label>
-            <input type="text" class="form-control" name="rainfall" id="formGroupExampleInput2"
-              placeholder="Enter amount of rainfall" value={{temp.rainfall}}>
-          </div>
-
-
-          <div class="d-flex justify-content-center mx-auto mt-3">
-            <button type="submit" class="btn" style="background-color:#1daa63 ; color:white" >Submit </button>
-          </div>
+    <main class="d-flex flex-wrap justify-content-evenly">
+    <div class="container">
+        <div class="card">
+          <h2>Tutorial</h2>
+          <div class="iframe-container">
+            <iframe lign="center" width="600" height="400" src="https://drive.google.com/file/d/1R934wbPWUX7TULASGrfcW2JES06Z_2Se/preview" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+       </iframe>
+          </div><br>
+          <p>To quickly learn how to use our project and what it does, watch our tutorial. It provides a summarized overview and 
+            instructions on how to get started. This will help you understand the features and functions of the project, 
+            and how to use them effectively. </p>
+        </div>
       </div>
-      </form>
-    </div>
-    <br>
+    </main>
 
-    </div>
+    
+        
   </center>
 
-
- 
 </body>
 
 </html>
